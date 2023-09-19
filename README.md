@@ -11,4 +11,4 @@
 ---
 امکانات : سیستم لایک و ویو ، ثبت نام و ورود با شماره ی تلفن ، پنل ادمین جازمین و...
 ---
-![alt - Github]("C:\Users\ShahrRayane.IR\Desktop\Screenshot (164).png")
+![alt - Github]("file:///C:/Users/ShahrRayane.IR/Desktop/Screenshot%20(164).png")
