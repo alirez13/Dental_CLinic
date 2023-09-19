@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+
+    <!-- Start Page Title Area -->
+    <div class="page-title-area page-title-bg2">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>تماس با ما</h2>
+                        <ul>
+                            <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                            <li>تماس با ما</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+
+    <!-- Start Contact Info Area -->
+    <section class="contact-info-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="flaticon-pin"></i>
+                        </div>
+
+                        <h3>موقعیت</h3>
+                        <span>ایران ،استان  قم،میدان جانبازان،بلوار نیایش،مصلی،پلاک24</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="flaticon-phone-call"></i>
+                        </div>
+
+                        <h3>تلفن</h3>
+                        <span><a href="tel:025_37833404">02537833404</a></span>
+                        <span><a href="tel:09911007261">09911007261</a></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="flaticon-email"></i>
+                        </div>
+
+                        <h3>اینستاگرام</h3>
+                        <span><a href="">دکتر طاهره علیزاده</a></span>
+                        <span><a href="https://instagram.com/dr.saeid.alizadehh">دکتر سعید علیزاده</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start Contact Info Area -->
+
+    <!-- Start Contact Area -->
+    <section class="contact-area ptb-100">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="row m-0">
+                    <div class="col-lg-7 col-md-12 p-0">
+                        <div class="contact-form">
+                            <span class="sub-title">پیام دهید</span>
+                            <h2>برای ما پیام بگذارید</h2>
+
+                            <form method="post" action="{% url "contact:contact" %}">
+                                {% csrf_token %}
+                                {{ form }}
+
+
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="btn btn-primary">ارسال پیام <i
+                                            class="fas fa-paper-plane"></i></button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-12 p-0">
+                        <div id="map">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.17648482519968!2d50.86762550697201!3d34.633893819080164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f93bb9b43f9f7a9%3A0x35410304f1b51a59!2z2K_Zhtiv2KfZhtm-2LLYtNqp24wg2LPYuduM2K8g2LnZhNuM2LLYp9iv2Yc!5e0!3m2!1sen!2snl!4v1681882600626!5m2!1sen!2snl" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-map"><img src="{% static 'img/bg-map.png' %}" alt="image"></div>
+    </section>
+    <!-- End Contact Area -->
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    {% include 'includes/head_links.html' %}
+    {% block extra_head %}
+    {% endblock %}
+</head>
+
+
+<body>
+
+<header>
+    {% include 'includes/header.html' %}
+</header>
+
+
+
+{% block main %}
+
+
+{% endblock %}
+
+
+<!--- Footer ---->
+{% include 'includes/footer.html' %}
+
+
+
+<!--- Footer Links ---->
+{% include 'includes/footer_links.html' %}
+
+{% block extra_foot %}
+{% endblock %}
+</body>
+</html>

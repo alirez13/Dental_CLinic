@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+
+
+    <!-- Start Page Title Area -->
+    <div class="page-title-area page-title-bg1">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>درباره ما</h2>
+                        <ul>
+                            <li><a href="index.html">صفحه اصلی</a></li>
+                            <li>درباره ما</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+
+
+
+    <!-- Start Doctor Area -->
+    <section class="doctor-area pt-100 pb-70">
+        <div class="container">
+
+
+            <div class="doctor-box">
+                <div class="single-doctor-box">
+                    <div class="image">
+                        <img src="{% static 'images/3.jpg' %}" alt="image" width="500">
+                    </div>
+
+                    <div class="content">
+                        <a href="{% url 'about_ua:dr' %}"><h3>دکتر اسمیت </h3></a>
+                        <span>دندانپزشک</span>
+
+                        <ul class="social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End Doctor Area -->
+
+
+{% endblock %}

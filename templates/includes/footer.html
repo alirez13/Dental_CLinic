@@ -1,0 +1,69 @@
+{% load static %}
+
+<!-- Start Footer Area -->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="logo">
+                        <a href="#"><img src="{% static 'images/logoo.png' %}" width="250" height="100" alt="image"></a>
+
+                     <p>همه ی تلاش ما این است که در لبخند زیبای شما سهیم باشیم❤️</p>
+                    </div>
+{##}
+{#                    <ul class="social">#}
+{#                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>#}
+{#                    </ul>#}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>لینک های سریع</h3>
+
+                    <ul class="footer-quick-links">
+                        <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                        <li><a href="{% url 'home:price' %}">نرخ ما</a></li>
+                        <li><a href="{% url 'gallery:video' %}">ویدئو های ما</a></li>
+                        <li><a href="{% url 'gallery:post_tahere' %}">نمونه کار دکتر طاهره علیزاده</a></li>
+                        <li><a href="{% url 'gallery:post_saeid' %}">نمونه کار دکتر سعید علیزاده</a></li>
+
+                        <li><a href="{% url 'blog:blog' %}">آخرین مقالات</a></li>
+                        <li><a href="{% url 'contact:contact' %}">تماس با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-sm-3 offset-md-3">
+                <div class="single-footer-widget">
+                    <h3>اطلاعات تماس</h3>
+
+                    <ul class="footer-contact-info">
+                        <li><span>موقعیت:</span> ایران ،استان  قم،میدان جانبازان،بلوار نیایش،مصلی،پلاک24</li>
+                        <li><span>اینستاگرام</span> <a href="https://instagram.com/dr.saeid.alizadehh">دکتر سعید علیزاده</a></li>
+                        <li><span>اینستاگرام</span> <a href="https://instagram.com/dr.tahereh.alizade">دکتر طاهره علیزاده</a></li>
+                        <li><span>تلفن:</span><a href="tel:025_37833404">02537833404</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-6 col-md-6">
+                    <p>کپی رایت <i class="far fa-copyright"></i> 1402. تمام حقوق قالب محفوظ است. طراحی توسط <a
+                            href="https://www.rtl-theme.com/author/barat/?aff=barat" target="_blank">AlIReza Momeni </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->

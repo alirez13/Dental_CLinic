@@ -1,0 +1,451 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+{% load ratings %}
+{% block main %}
+
+
+    <!-- Start Page Title Area -->
+    <div class="page-title-area page-title-bg1">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2> جزئیات وبلاگ {{ post.title }} </h2>
+                        <ul>
+                            <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                            <li>وبلاگ</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+
+    <!-- Start Blog Details Area -->
+    <section class="blog-details-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details-desc">
+                        <div class="article-image">
+                            <img src="{{ post.image.url }}" alt="image" width="400">
+                        </div>
+
+                        <div class="article-content">
+                            <div class="entry-meta">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> <a href="#">{{ post.date }}</a></li>
+                                    <li><i class="fas fa-user"></i> <a href="#">{{ post.author }} </a></li>
+                                    <li><i class="fas fa-eye"></i> <a href="#">{% get_hit_count for post %}</a></li>
+
+                                        {% if is_like %}
+
+                                            <li><a onclick="like('{{ post.title }}', '{{ post.id }}')"
+                                            ><i id="like"
+                                                style="font-size: 20px;" class="fa fa-heart"></i>
+                                               </a> <span id="count">  {{ post.likes.count }}</span>
+                                            </li>
+                                        {% else %}
+                                            <li><a onclick="like('{{ post.title }}', '{{ post.id }}')"
+                                            ><i id="like"
+                                                style="font-size: 20px;" class="fa fa-heart-o"></i>
+                                               </a><span id="count">  {{ post.likes.count }}</span>
+                                            </li>
+                                        {% endif %}
+
+
+                                </ul>
+                            </div>
+
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.one_body }}</p>
+
+
+                            <blockquote class="wp-block-quote">
+                                <p>{{ post.do_you_know }}</p>
+
+                                <cite>Tom Cruise</cite>
+                            </blockquote>
+
+                            <p>{{ post.two_body }}</p>
+
+                            <ul class="wp-block-gallery columns-3">
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="{{ post.image1.url }}" alt="image">
+                                    </figure>
+                                </li>
+
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="{{ post.image2.url }}" alt="image">
+                                    </figure>
+                                </li>
+
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="{{ post.image3.url }}" alt="image">
+                                    </figure>
+                                </li>
+                            </ul>
+
+                            <h3>خدماتی که ما ارائه می دهیم:</h3>
+
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i> مهارت های علمی برای به دست آوردن نتیجه مطلوب</li>
+                                <li><i class="fas fa-check"></i> مهارتهای ارتباطی برای به دست آوردن نتیجه مطلوب</li>
+                                <li><i class="fas fa-check"></i> فرصت شغلی مناسب برای به دست آوردن نتیجه</li>
+                                <li><i class="fas fa-check"></i> محیط کاری مناسب برای نتیجه</li>
+                            </ul>
+                            {##}
+                            {#                            <h3>دندانپزشکی و مراقبت های ویژه</h3>#}
+                            {#                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال#}
+                            {#                                استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم#}
+                            {#                                ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد#}
+                            {#                                صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد.</p>#}
+                            {##}
+                            {#                            <h3>مراقبت های ویژه برای کودکان و بزرگسالان</h3>#}
+                            {#                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال#}
+                            {#                                استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد.</p>#}
+                        </div>
+
+                        <div class="article-footer">
+                            <div class="article-tags">
+                                <span><i class="fas fa-bookmark"></i></span>
+
+                                {% for catg in post.category.all %}
+                                    <a href="#">{{ catg }}</a>،
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="article-share">
+                                <ul class="social">
+                                    <li><span>اشتراک گذاری:</span></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="klev-post-navigation">
+                            <div class="prev-link-wrapper">
+                                <div class="info-prev-link-wrapper">
+                                    <a href="#">
+                                            <span class="image-prev">
+                                                <img src="assets/img/about-img2.jpg" alt="image">
+                                                <span class="post-nav-title">قبلی</span>
+                                            </span>
+
+                                        <span class="prev-link-info-wrapper">
+                                                <span class="prev-title">چرا باید از دندان های خود مراقبت کنیم؟ </span>
+                                                <span class="meta-wrapper">
+                                                    <span class="date-post">20 دی 1398</span>
+                                                </span>
+                                            </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="next-link-wrapper">
+                                <div class="info-next-link-wrapper">
+                                    <a href="#">
+                                            <span class="next-link-info-wrapper">
+                                                <span class="next-title">دندانپزشکی و مراقبت های ویژه برای کودکان.</span>
+                                                <span class="meta-wrapper">
+                                                    <span class="date-post">20 دی 1398</span>
+                                                </span>
+                                            </span>
+
+                                        <span class="image-next">
+                                                <img src="assets/img/about-img3.jpg" alt="image">
+                                                <span class="post-nav-title">بعدی</span>
+                                            </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {#                        <div class="comments-area">#}
+                        {#                            <h3 class="comments-title">2 نظر:</h3>#}
+                        {##}
+                        {#                            <ol class="comment-list">#}
+                        {#                                <li class="comment">#}
+                        {#                                    <article class="comment-body">#}
+                        {#                                        <footer class="comment-meta">#}
+                        {#                                            <div class="comment-author vcard">#}
+                        {#                                                <img src="assets/img/client-image/1.jpg" class="avatar" alt="image">#}
+                        {#                                                <b class="fn">جان اسمیت</b>#}
+                        {#                                                <span class="says">می گوید:</span>#}
+                        {#                                            </div>#}
+                        {##}
+                        {#                                            <div class="comment-metadata">#}
+                        {#                                                <a href="#">#}
+                        {#                                                    <time>20 دی 1398 در 10:59 صبح</time>#}
+                        {#                                                </a>#}
+                        {#                                            </div>#}
+                        {#                                        </footer>#}
+                        {##}
+                        {#                                        <div class="comment-content">#}
+                        {#                                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به#}
+                        {#                                                مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و#}
+                        {#                                                متن را در بر می گیرد.</p>#}
+                        {#                                        </div>#}
+                        {##}
+                        {#                                        <div class="reply">#}
+                        {#                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                        {#                                        </div>#}
+                        {#                                    </article>#}
+                        {##}
+                        {#                                    <ol class="children">#}
+                        {#                                        <li class="comment">#}
+                        {#                                            <article class="comment-body">#}
+                        {#                                                <footer class="comment-meta">#}
+                        {#                                                    <div class="comment-author vcard">#}
+                        {#                                                        <img src="assets/img/client-image/2.jpg" class="avatar"#}
+                        {#                                                             alt="image">#}
+                        {#                                                        <b class="fn">جان اسمیت</b>#}
+                        {#                                                        <span class="says">می گوید:</span>#}
+                        {#                                                    </div>#}
+                        {##}
+                        {#                                                    <div class="comment-metadata">#}
+                        {#                                                        <a href="#">#}
+                        {#                                                            <time>20 دی 1398 در 10:59 صبح</time>#}
+                        {#                                                        </a>#}
+                        {#                                                    </div>#}
+                        {#                                                </footer>#}
+                        {##}
+                        {#                                                <div class="comment-content">#}
+                        {#                                                    <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم#}
+                        {#                                                        ایپسوم به مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به#}
+                        {#                                                        سادگی ساختار چاپ و متن را در بر می گیرد.</p>#}
+                        {#                                                </div>#}
+                        {##}
+                        {#                                                <div class="reply">#}
+                        {#                                                    <a href="#" class="comment-reply-link">پاسخ</a>#}
+                        {#                                                </div>#}
+                        {#                                            </article>#}
+                        {#                                        </li>#}
+                        {##}
+                        {#                                        <ol class="children">#}
+                        {#                                            <li class="comment">#}
+                        {#                                                <article class="comment-body">#}
+                        {#                                                    <footer class="comment-meta">#}
+                        {#                                                        <div class="comment-author vcard">#}
+                        {#                                                            <img src="assets/img/client-image/3.jpg" class="avatar"#}
+                        {#                                                                 alt="image">#}
+                        {#                                                            <b class="fn">جان اسمیت</b>#}
+                        {#                                                            <span class="says">می گوید:</span>#}
+                        {#                                                        </div>#}
+                        {##}
+                        {#                                                        <div class="comment-metadata">#}
+                        {#                                                            <a href="#">#}
+                        {#                                                                <time>20 دی 1398 در 10:59 صبح</time>#}
+                        {#                                                            </a>#}
+                        {#                                                        </div>#}
+                        {#                                                    </footer>#}
+                        {##}
+                        {#                                                    <div class="comment-content">#}
+                        {#                                                        <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم#}
+                        {#                                                            ایپسوم به مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به#}
+                        {#                                                            سادگی ساختار چاپ و متن را در بر می گیرد.</p>#}
+                        {#                                                    </div>#}
+                        {##}
+                        {#                                                    <div class="reply">#}
+                        {#                                                        <a href="#" class="comment-reply-link">پاسخ</a>#}
+                        {#                                                    </div>#}
+                        {#                                                </article>#}
+                        {#                                            </li>#}
+                        {#                                        </ol>#}
+                        {#                                    </ol>#}
+                        {#                                </li>#}
+                        {##}
+                        {#                                <li class="comment">#}
+                        {#                                    <article class="comment-body">#}
+                        {#                                        <footer class="comment-meta">#}
+                        {#                                            <div class="comment-author vcard">#}
+                        {#                                                <img src="assets/img/client-image/4.jpg" class="avatar" alt="image">#}
+                        {#                                                <b class="fn">جان اسمیت</b>#}
+                        {#                                                <span class="says">می گوید:</span>#}
+                        {#                                            </div>#}
+                        {##}
+                        {#                                            <div class="comment-metadata">#}
+                        {#                                                <a href="#">#}
+                        {#                                                    <time>20 دی 1398 در 10:59 صبح</time>#}
+                        {#                                                </a>#}
+                        {#                                            </div>#}
+                        {#                                        </footer>#}
+                        {##}
+                        {#                                        <div class="comment-content">#}
+                        {#                                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به#}
+                        {#                                                مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و#}
+                        {#                                                متن را در بر می گیرد.</p>#}
+                        {#                                        </div>#}
+                        {##}
+                        {#                                        <div class="reply">#}
+                        {#                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                        {#                                        </div>#}
+                        {#                                    </article>#}
+                        {##}
+                        {#                                    <ol class="children">#}
+                        {#                                        <li class="comment">#}
+                        {#                                            <article class="comment-body">#}
+                        {#                                                <footer class="comment-meta">#}
+                        {#                                                    <div class="comment-author vcard">#}
+                        {#                                                        <img src="assets/img/client-image/1.jpg" class="avatar"#}
+                        {#                                                             alt="image">#}
+                        {#                                                        <b class="fn">جان اسمیت</b>#}
+                        {#                                                        <span class="says">می گوید:</span>#}
+                        {#                                                    </div>#}
+                        {##}
+                        {#                                                    <div class="comment-metadata">#}
+                        {#                                                        <a href="#">#}
+                        {#                                                            <time>20 دی 1398 در 10:59 صبح</time>#}
+                        {#                                                        </a>#}
+                        {#                                                    </div>#}
+                        {#                                                </footer>#}
+                        {##}
+                        {#                                                <div class="comment-content">#}
+                        {#                                                    <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم#}
+                        {#                                                        ایپسوم به مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به#}
+                        {#                                                        سادگی ساختار چاپ و متن را در بر می گیرد.</p>#}
+                        {#                                                </div>#}
+                        {##}
+                        {#                                                <div class="reply">#}
+                        {#                                                    <a href="#" class="comment-reply-link">پاسخ</a>#}
+                        {#                                                </div>#}
+                        {#                                            </article>#}
+                        {#                                        </li>#}
+                        {#                                    </ol>#}
+                        {#                                </li>#}
+                        {#                            </ol>#}
+                        {##}
+                        {#                            <div class="comment-respond">#}
+                        {#                                <h3 class="comment-reply-title">نظر دهید</h3>#}
+                        {##}
+                        {#                                <form class="comment-form">#}
+                        {#                                    <p class="comment-notes">#}
+                        {#                                        <span id="email-notes">آدرس ایمیل شما منتشر نخواهد شد.</span>#}
+                        {#                                        قسمت های مورد نظر علامت گذاری شده اند.#}
+                        {#                                        <span class="required">*</span>#}
+                        {#                                    </p>#}
+                        {#                                    <p class="comment-form-comment">#}
+                        {#                                        <label>نظر</label>#}
+                        {#                                        <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525"#}
+                        {#                                                  required="required"></textarea>#}
+                        {#                                    </p>#}
+                        {#                                    <p class="comment-form-author">#}
+                        {#                                        <label>نام <span class="required">*</span></label>#}
+                        {#                                        <input type="text" id="author" name="author" required="required">#}
+                        {#                                    </p>#}
+                        {#                                    <p class="comment-form-email">#}
+                        {#                                        <label>ایمیل <span class="required">*</span></label>#}
+                        {#                                        <input type="email" id="email" name="email" required="required">#}
+                        {#                                    </p>#}
+                        {#                                    <p class="comment-form-url">#}
+                        {#                                        <label>وبسایت</label>#}
+                        {#                                        <input type="url" id="url" name="url">#}
+                        {#                                    </p>#}
+                        {#                                    <p class="comment-form-cookies-consent">#}
+                        {#                                        <input type="checkbox" value="yes" name="wp-comment-cookies-consent"#}
+                        {#                                               id="wp-comment-cookies-consent">#}
+                        {#                                        <label for="wp-comment-cookies-consent">نام ، ایمیل و وب سایت خود را برای بار#}
+                        {#                                            دیگر که اظهار نظر می کنم در این مرورگر ذخیره کنید.</label>#}
+                        {#                                    </p>#}
+                        {#                                    <p class="form-submit">#}
+                        {#                                        <input type="submit" name="submit" id="submit" class="submit" value="ارسال">#}
+                        {#                                    </p>#}
+                        {#                                </form>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area" id="secondary">
+                        <section class="widget widget_search">
+                            <form class="search-form">
+                                <label>
+                                    <span class="screen-reader-text">جستجو:</span>
+                                    <input type="search" class="search-field" placeholder="جستجو...">
+                                </label>
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </section>
+
+                        <section class="widget widget_klev_posts_thumb">
+                            <h3 class="widget-title">پست های محبوب</h3>
+
+                            {% for recent in recent_post %}
+                                <article class="item">
+                                    <a href="{{ post.get_absolute_url }}" class="thumb">
+                                        <img src="{{ post.image.url }}" alt="">
+                                    </a>
+                                    <div class="info">
+                                        <time datetime="2019-06-30">{{ recent.date }}</time>
+                                        <h4 class="title usmall"><a href="{{ post.get_absolute_url }}">{{ post.title }}
+                                        </a></h4>
+                                    </div>
+
+                                    <div class="clear"></div>
+                                </article>
+                            {% endfor %}
+
+
+                        </section>
+
+                        <section class="widget widget_categories">
+                            <h3 class="widget-title">دسته بندی ها</h3>
+
+                            <ul>
+                                <li><a href="{% url 'gallery:post_saeid' %}"> دکتر سعید علیزاده</a></li>
+                                <li><a href="{% url 'gallery:post_tahere' %}"> دکتر طاهره علیزاده</a></li>
+                                <li><a href="{% url 'gallery:video' %}"> ویدئو ها</a></li>
+                                <li><a href="">درباره ی ما</a></li>
+                                <li><a href="#">نکات</a></li>
+                                <li><a href="#">دسته بندی نشده</a></li>
+                            </ul>
+                        </section>
+
+
+                        <section class="widget widget_recent_entries">
+                            <h3 class="widget-title">پست های اخیر</h3>
+
+                            <ul>
+                      {% for item in recent_post %}
+                                    <li><a href="{{ item.get_absolute_url }}">{{ item.title}}</a>
+                                </li>
+
+                      {% endfor %}
+
+
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_archive">
+
+
+                            <section class="widget widget_tag_cloud">
+                                <h3 class="widget-title">برچسب ها</h3>
+
+                                <div class="tagcloud">
+                                    {% for category in category %}
+                                        <a href="#">{{ category }}</a>
+                                    {% endfor %}
+
+                                </div>
+                            </section>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Details Area -->
+
+{% endblock %}

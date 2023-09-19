@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block main %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Checkout</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Checkout Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span
+                        class="bg-secondary pr-3">Address</span>
+                </h5>
+                <div class="bg-light p-30 mb-5">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>fullname</label>
+                                {{ form.full_name|attr:"class:form-control" }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>phone</label>
+                                {{ form.phone|attr:"class:form-control" }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>email</label>
+                                {{ form.email|attr:"class:form-control" }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>address</label>
+                                {{ form.address|attr:"class:form-control" }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>zip code</label>
+                                {{ form.postal_code|attr:"class:form-control" }}
+                            </div>
+
+                        </div>
+                        <button type="submit" class="red btn btn-primary">ارسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+
+{% endblock %}

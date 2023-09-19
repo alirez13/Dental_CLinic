@@ -1,0 +1,147 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block extra_foot %}
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block main %}
+
+    <!-- Start Page Title Area -->
+    <div class="page-title-area page-title-bg1">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2> جزئیات کار {{ post_t.title }} </h2>
+                        <ul>
+                            <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                            <li>جزئیات پژوهش</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+
+    <!-- Start Research Details Area -->
+    <section class="research-details-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="research-details-header">
+                        <h3>{{ post_t.title }}</h3>
+
+                    </div>
+
+                    <div class="research-details-image-slides owl-carousel owl-theme">
+                        <div class="single-image">
+                            <img src="{{ post_t.image.url }}" alt="image">
+                        </div>
+
+                        <div class="single-image">
+                            <img src="{{ post_t.image1.url }}" alt="image">
+                        </div>
+                        <div class="single-image">
+                            <img src="{{ post_t.image2.url }}" alt="image">
+                        </div>
+                    </div>
+
+                    <div class="research-details-desc">
+                        <h3>توضیحات کار:</h3>
+
+                        <p>{{ post_t.two_body }}</p>
+                    </div>
+
+                    <div class="klev-post-navigation">
+                        <div class="prev-link-wrapper">
+                            <div class="info-prev-link-wrapper">
+                                <a href="">
+                                        <span class="image-prev">
+                                            <img src="{{ post_t.before.url }}" alt="image">
+                                            <span class="post-nav-title">قبلی</span>
+                                        </span>
+
+                                    <span class="prev-link-info-wrapper">
+                                            <span class="prev-title">عکس قبل</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="next-link-wrapper">
+                            <div class="info-next-link-wrapper">
+                                <a href="#">
+                                        <span class="next-link-info-wrapper">
+                                            <span class="next-title">عکس بعد</span>
+
+                                        </span>
+
+                                    <span class="image-next">
+                                            <img src="{{ post_t.after.url }}" alt="image">
+                                            <span class="post-nav-title">بعدی</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area" id="secondary">
+                        <section class="widget widget_research_info">
+                            <h3 class="widget-title">اطلاعات</h3>
+
+                            <ul>
+                                <li><span>عنوان کار :</span> {{ post_t.title }}</li>
+{#                                <li><span>دسته بندی:</span> {{ post.category }}</li>#}
+                                <li><span> نام دکتر:</span>طاهره علیزاده </li>
+                                <li><span>موقعیت:</span> ایران / قم</li>
+                                <li><span>بازدید:</span> {% get_hit_count for post_t %} </li>
+                                <li><span>پسندها: </span>
+                                    {% if request.user.is_authenticated %}
+                                        {% if is_liked %}
+                                        <div class="col d-inline-block">
+                                            <a onclick="like('{{ post_t.id }}')" class="love active" id="like">
+                                                <i class="fa fa-heart" style="color: #fe235b; font-size: 30px;" id="like-out"></i>
+                                                <div id="count" style="font-size: 20px;">{{ post_t.like.all.count }}</div>
+                                            </a>
+                                        </div>
+                                        {% else %}
+                                        <div class="col d-inline-block">
+                                            <a onclick="like('{{ post_t.id }}')" class="love" id="like">
+                                                <i class="fa fa-heart-o" style="color: #fe235b; font-size: 30px;" id="like-out"></i>
+                                                <div id="count" style="font-size: 20px;">{{ post_t.like.all.count }}</div>
+                                            </a>
+                                        </div
+                                        {% endif %}
+                                    {% else %}
+                                    {{ post_t.post.all.count }} 
+                                    <br><br>
+                                    ابتدا <a href="{% url 'account:register' %}">وارد</a> شوید
+                                    {% endif%}
+                                </li>
+
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_contact">
+                            <div class="text">
+                                <span>تماس </span>
+                                <a href="tel:025-37833403">025-37833403</a>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Research Details Area -->
+
+{% endblock %}

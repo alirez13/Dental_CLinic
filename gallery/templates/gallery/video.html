@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+    <!-- Start Page Title Area -->
+    <div class="page-title-area page-title-bg3">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>آرشیو ویدئو ها </h2>
+                        <ul>
+                            <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                            <li>آرشیو ویدئو ها</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+
+    <!-- Start Blog Area -->
+    <section class="blog-area ptb-100">
+        <div class="container">
+            <div class="row">
+                {% for video in video %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-post">
+                            <div class="post-image">
+                                <a href="#"><img src="{{ video.cover.url }}" alt="image"></a>
+
+                                <div class="date"><i class="far fa-calendar-alt"></i> </div>
+                            </div>
+
+                            <div class="post-content">
+                                <h3><a href="{{ video.get_absolute_url }}">{{ video.title }}</a></h3>
+                                <p>{{ video.one_body }}</p>
+                                {% if request.user.is_authenticated %}
+                                    <a href="{{ video.get_absolute_url }}" class="read-more-btn">تماشای ویدئو<i
+                                            class="flaticon-back"></i></a></div>
+                                {% else %}
+                                    <a href="{% url 'account:register' %}" class="read-more-btn">ابتدا ثبت نام کنید <i
+                                    ></i></a></div>
+                                {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+
+
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="pagination-area">
+                        {% if video.has_other_pages %}
+                            {% if video.has_previous %}
+
+                 <li><a href="?page=
+
+
+                                        {{ video.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %} "><i
+                                        class="fas fa-angle-double-left"> قبلی </i></a>
+                            {% endif %}
+                            {% for video in video.paginator.page_range %}
+                                {% if video.number == video %}
+                                    <li class="active"><a href="?page=
+
+
+
+
+
+
+
+
+
+                                            {{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %} ">{{ item }}</a>
+                                    </li>
+                                {% else %}
+                                    <li><a href="?page=
+
+
+
+
+
+
+
+
+                                            {{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %} ">{{ item }}</a>
+                                    </li>
+
+                                {% endif %}
+                            {% endfor %}
+                            {% if video.has_next %}
+                                <li><a href="?page=
+
+
+
+
+
+
+                                        {{ video.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %} "><i
+                                        class="fas fa-angle-double-right"> بعدی </i></a></li>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Area -->
+
+
+{% endblock %}

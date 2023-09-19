@@ -1,0 +1,123 @@
+{% load static %}
+
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader">
+        <div class="shadow"></div>
+        <div class="box"></div>
+    </div>
+</div>
+<!-- End Preloader -->
+
+<!-- Start Navbar Area -->
+<div class="navbar-area navbar-style-two">
+    <div class="klev-responsive-nav">
+        <div class="container">
+            <div class="klev-responsive-menu">
+                <div class="logo">
+                    <a href="{% url 'home:main' %}">
+                        <img src="{% static 'images/logoo.png' %}" alt="logo" width="100" height="100">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="klev-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="{% url 'home:main' %}">
+                    <img src="{% static 'images/logoo.png' %}" alt="logo" width="100" height="100">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                {% if request.user.is_admin %}
+                                <a href="{% url 'admin:login' %}" class="nav-link">ادمین </a>
+                                    {% else %}
+                                     <a href="#" class="nav-link">{{ request.user.phone }} </a>
+
+                                       {% endif %}
+                                {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'account:register' %}" class="nav-link active">ثبت نام </a>
+
+
+                            </li>
+                        {% endif %}
+
+
+                        <li class="nav-item"><a href="{% url 'home:main' %}" class="nav-link active">خانه </a>
+                            {#                                        <ul class="dropdown-menu">#}
+                            {#                                            <li class="nav-item"><a href="register.html" class="nav-link">صفحه اصلی 1</a></li>#}
+                            {##}
+                            {#                                            <li class="nav-item"><a href="index-2.html" class="nav-link active">صفحه اصلی 2</a></li>#}
+                            {#                                        </ul>#}
+                        </li>
+
+                        {#                                    <li class="nav-item"><a href="#" class="nav-link">صفحات <i class="fas fa-chevron-down"></i></a>#}
+                        {#                                        <ul class="dropdown-menu">#}
+                        {#                                            <li class="nav-item"><a href="about.html" class="nav-link">درباره ما</a></li>#}
+                        {##}
+                        {#                                            <li class="nav-item"><a href="team.html" class="nav-link">پزشکان</a></li>#}
+                        {##}
+                        {#                                            <li class="nav-item"><a href="pricing.html" class="nav-link">قیمت گذاری</a></li>#}
+                        {##}
+                        {#                                            <li class="nav-item"><a href="faq.html" class="nav-link">سوالات متداول</a></li>#}
+                        {##}
+                        {#                                            <li class="nav-item"><a href="error-404.html" class="nav-link">خطا 404</a></li>#}
+                        {#                                        </ul>#}
+                        {#                                    </li>#}
+
+                        <li class="nav-item"><a href="{% url 'blog:blog' %}" class="nav-link">وبلاگ <i
+                                class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a href="{% url 'blog:blog' %}" class="nav-link"> مقالات علمی</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a href="#" class="nav-link">نمونه کار <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a href="{% url 'gallery:post_saeid' %}" class="nav-link">دکتر سعید علیزاده</a></li>
+                                <li class="nav-item"><a href="{% url 'gallery:post_tahere' %}" class="nav-link">دکتر طاهره علیزاده</a></li>
+
+                                <li class="nav-item"><a href="{% url 'gallery:video' %}" class="nav-link"> ویدئو</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a href="{% url 'home:price' %}" class="nav-link"> قیمت گذاری <i
+                                class=""></i></a>
+                            <ul class="dropdown-menu">
+                                {#                                <li class="nav-item"><a href="blog-1.html" class="nav-link"> معرفی</a></li>#}
+
+                                {#                                <li class="nav-item"><a href="single-blog.html" class="nav-link"> قیمت گذاری</a></li>#}
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="{% url 'about_ua:about_us' %}" class="nav-link"> درباره ی ما <i
+                                class=""></i></a>
+
+
+                        <li class="nav-item"><a href="{% url 'contact:contact' %}" class="nav-link"> ارتباط با
+                            ما <i
+                                    class=""></i></a>
+                            <ul class="dropdown-menu">
+
+
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </nav>
+
+
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->
