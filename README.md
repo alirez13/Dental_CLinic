@@ -12,4 +12,6 @@
 امکانات : سیستم لایک و ویو ، ثبت نام و ورود با شماره ی تلفن ، پنل ادمین جازمین و...
 ---
 ![Screenshot (164)](https://github.com/alirez13/Dental_CLinic/assets/106848511/0be56bb8-fd27-45f8-8878-ce08830a5e5e)
+![Screenshot (165)](https://github.com/alirez13/Dental_CLinic/assets/106848511/dfe009a7-0275-4e38-8548-537b17dd8a23)
+
 
