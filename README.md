@@ -1,5 +1,5 @@
 # Dental_CLinic
-پروژه ی کلینیک دندانپزشکی
+پروژه ی کلینیک دندانپزشکی [dr-alizade](https://dr-alizade.ir/)
 ---
 ابتدا با دستور `pip install -r requirements.txt` کتابخانه های مورد نظر را نصب کنید
 ---
